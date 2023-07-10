@@ -1,0 +1,190 @@
+/* 样式初始化 */
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: 微软雅黑;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    background-color: #333333;
+}
+a{
+    text-decoration: none;
+    color:#333;
+}
+ul,li,ol{
+    list-style: none;
+}
+/* 中间容器 */
+.container{
+    width: 1000px;
+    margin: 0 auto;
+    background-color: #ecececfa;
+}
+/* 计算解释组 */
+.group{
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+.group>h2{
+    margin-top: 25px;
+    font-weight: normal;
+    font-size: 30px;
+    color: #fff;
+}
+.group>span{
+    font-size: 19px;
+    font-weight:bold;
+    margin-top: 8px;
+    color: #FFE5B4;
+}
+.group_list{
+    width:100%;
+    display: flex;
+    background-color: #486E93;;
+    align-items: center;
+    height: 200px;
+}
+.group_list>img{
+    height: 100%;
+    margin-right: 60px;
+}
+/* 导航栏 */
+.outside{
+    width: 100%;
+    height: 65px;
+    background-color: #174366;
+}
+.outside>ul{
+    width: 95%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+.outside>ul>li{
+    margin-left: 30px;
+    padding: 3px 5px;
+}
+.outside>ul>li>a{
+    color: #fff;
+}
+.outside>ul>li:hover{
+    background-color: #2F516C;
+}
+.outside>ul>li:nth-child(1){
+    background-color: #486E93;
+    padding: 3px 5px;
+}
+/* 内容 */
+.content{
+    width: 93%;
+    margin: 0 auto;
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+.content_left{
+    width: 70%;
+}
+
+/* 第一部分 */
+.work_list{
+    width: 110%;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.work_list>img{
+    width: 45%;
+    height: 100%;
+}
+.work_list>h5{
+    margin-left: 0px;
+    width: 50%;
+    font-weight: normal;
+    line-height: 1.4em;
+    font-size: 13px;
+}
+/* 第二部分 */
+.two_list{
+    width: 90%;
+    border-top: 1px solid #A32911;
+}
+.two_list>span{
+    color: #A32911;
+    font-size: 13px;
+    font-weight: bold;
+}
+.two_list>a{
+    font-size: 13px;
+    font-weight: bold;
+    color: #305097;
+}
+.two_list>a:hover{
+    color: #333;
+    border-bottom: 1px solid #333;
+}
+.two_list>img{
+    width: 100%;
+    height: 180px;
+    margin: 5px 0px;
+}
+.two_list>ul{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.two_list>ul>li{
+    width: 50%;
+    font-size: 13px;
+    margin-top: 10px;
+    font-weight: bold;
+    white-space: nowrap; 
+    overflow: hidden; /* 隐藏溢出内容 */
+    text-overflow: ellipsis; /* 使用省略号表示溢出内容 */
+}
+/* 图 */
+.img_list{
+    width: 93%;
+    margin: 0 auto;
+    margin-top: 5px;
+    padding-bottom: 30px;
+}
+.img_list>img{
+    width: 100%;
+}
+/* 右半部分 */
+.content_right{
+    width: 21%;
+}
+.right_list{
+    width: 100%;
+    margin-top: 150px;
+    border-top: 1px solid #174366;
+    display: flex;
+    flex-direction: column;
+}
+.right_list>P{
+    margin: 0px;
+    font-size: 12px;
+    color: #174366;
+    font-weight: bold;
+}
+.right_list span{
+    font-size: 11px;
+    color: #946666;
+}
+.right_list a{
+    font-size: 13px;
+    font-weight: bold;
+    color: #305097;
+}
+.right_list a:hover{
+    color: #333;
+    border-bottom: 1px solid #333;
+}
