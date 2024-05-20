@@ -151,13 +151,15 @@ ul,li,ol{
     margin: 0 auto;
     padding: 17px 0px;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     flex-wrap: wrap;
 }
 .stud_list>li{
     width: 17%;
     display: flex;
     margin-top: 20px;
+    margin-left: 10px;  /* 新增左外边距 */
+    margin-right: 10px; /* 新增右外边距 */
     flex-direction: column;
     align-items: center;
 }
