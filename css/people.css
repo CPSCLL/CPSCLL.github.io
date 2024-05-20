@@ -162,9 +162,12 @@ ul,li,ol{
     margin-right: 10px; /* 新增右外边距 */
     flex-direction: column;
     align-items: center;
+    justify-content: space-between; /* 内容垂直分布 */
 }
 .stud_list>li img{
     width: 80%;
+    height: 170px;    /* 设置固定的高度 */
+    object-fit: cover; /* 确保图片不失真，多余的部分会被裁剪 */
 }
 .stud_list>li span{
     font-size: 100%;
