@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal Club</title>
+    <link rel="stylesheet" href="./css/journal_club.css">
+    <link rel="stylesheet" href="./css/modal.css"> <!-- 引入新的CSS文件 -->
+    <script src="./js/journal_club.js"></script> <!-- 引入JavaScript文件 -->
+</head>
+<body onload="checkLogin()">
+    <!-- 中间容器 -->
+    <div class="container">
+        <!-- CPSCLL -->
+        <div class="group_list">
+            <img src="./images/BJUTlogo1.png" alt="">
+            <div class="group">
+                <h2>CPS Computational Learning Laboratory</h2>
+            </div>
+        </div>
+    
+    <!-- 导航栏 -->
+    <div class="outside">
+        <ul>
+            <li> <a href="./index.html">HOME</a> </li>
+            <li> <a href="./research.html">RESEARCH</a></li>
+            <li> <a href="./people.html">PEOPLE</a></li>
+            <li> <a href="./publication.html">PUBLICATION</a></li>
+            <li> <a href="./teaching.html">TEACHING</a></li>
+            <li> <a href="./talks.html">TALKS</a></li>
+            <li> <a href="./news.html">NEWS</a></li>
+            <li> <a href="">J-CLUB</a></li>
+            <li><a href="./about.html">ABOUT</a></li>
+        </ul>
+    </div>
+
+    <!-- 登录模态弹窗 -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 style="color: #174366;">Please Log In</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <button onclick="login()">Log In</button>
+        </div>
+    </div>
+
+    <!-- Journal Club 内容 -->
+    <div id="protected-content" class="container_list" style="display: none;">
+        <!-- 上半部分 -->
+        <div class="half">
+            <p>Journal Club</p>
+        </div>
+
+        <div class="responsible">
+            <h5>PAPERS AVAILABLE FOR DOWNLOAD</h5>
+        </div>
+
+        <!-- 模块 1 -->
+        <div class="journal-module">
+            <h3>Presentation 1: Jiarong Du - 2024.09.05</h3>
+            <p>Description: This session focuses on recent advancements in machine learning algorithms for CPS.</p>
+            <ul class="stud_list">
+                <li>
+                    Paper 1: A multi-action deep reinforcement learning framework for flexible Job-shop scheduling problem 
+                    <button onclick="location.href='./journal_club_papers/P1_JiarongDu_20240905/1-A multi-action deep reinforcement learning framework for flexible Job-shop scheduling problem.pdf'" download>Download</button>
+                </li>
+                <li>
+                    Paper 2: A Deep Reinforcement Learning Framework Based on an Attention Mechanism and Disjunctive Graph Embedding for the Job-Shop Scheduling Problem
+                    <button onclick="location.href='./journal_club_papers/P1_JiarongDu_20240905/2-A_Deep_Reinforcement_Learning_Framework_Based_on_an_Attention_Mechanism_and_Disjunctive_Graph_Embedding_for_the_Job-Shop_Scheduling_Problem.pdf'" download>Download</button>
+                </li>
+                <li>
+                    Paper 3: Dynamic scheduling for flexible job shop with insufficient transportation resources via graph neural network and deep reinforcement learning
+                    <button onclick="location.href='./journal_club_papers/P1_JiarongDu_20240905/3-Dynamic scheduling for flexible job shop with insufficient transportation resources via graph neural network and deep reinforcement learning.pdf'" download>Download</button>
+                </li>
+                <li>
+                    Paper 4: Dynamic Job-Shop Scheduling via Graph Attention Networks and Deep Reinforcement Learning
+                    <button onclick="location.href='./journal_club_papers/P1_JiarongDu_20240905/4-Dynamic_Job-Shop_Scheduling_via_Graph_Attention_Networks_and_Deep_Reinforcement_Learning.pdf'" download>Download</button>
+                </li>
+                <li>
+                    Paper 5: Large Scale Dynamic Scheduling for Flexible Job-Shop With Random Arrivals of New Jobs by Hierarchical Reinforcement Learning
+                    <button onclick="location.href='./journal_club_papers/P1_JiarongDu_20240905/5-Large-Scale_Dynamic_Scheduling_for_Flexible_Job-Shop_With_Random_Arrivals_of_New_Jobs_by_Hierarchical_Reinforcement_Learning.pdf'" download>Download</button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 模块 2 -->
+        <div class="journal-module">
+            <h3>Module 2: Another Student - Date</h3>
+            <p>Description: This session will cover the latest research on control strategies for cyber-physical systems.</p>
+            <ul class="stud_list">
+                <li>
+                    Paper 1: Title of the Paper 
+                    <button onclick="location.href='./papers/paper6.pdf'" download>Download</button>
+                </li>
+                <li>
+                    Paper 2: Title of the Paper 
+                    <button onclick="location.href='./papers/paper7.pdf'" download>Download</button>
+                </li>
+                <li>
+                    Paper 3: Title of the Paper 
+                    <button onclick="location.href='./papers/paper8.pdf'" download>Download</button>
+                </li>
+                <li>
+                    Paper 4: Title of the Paper 
+                    <button onclick="location.href='./papers/paper9.pdf'" download>Download</button>
+                </li>
+                <li>
+                    Paper 5: Title of the Paper 
+                    <button onclick="location.href='./papers/paper10.pdf'" download>Download</button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 可以继续添加更多模块 -->
+    </div>
+</div>
+
+
+</body>
+</html>
