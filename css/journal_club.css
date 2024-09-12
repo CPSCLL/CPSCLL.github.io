@@ -1,0 +1,336 @@
+/* 样式初始化 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 微软雅黑;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #333333;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+ul, li, ol {
+    list-style: none;
+}
+
+/* 中间容器 */
+.container {
+    width: 1100px;
+    height: 2000px;
+    margin: 0 auto;
+    background-color: #ecececfa;
+}
+
+/* 计算解释组 */
+.group {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.group > h2 {
+    margin-top: 25px;
+    font-weight: normal;
+    font-size: 30px;
+    color: #fff;
+}
+
+.group > span {
+    font-size: 19px;
+    font-weight: bold;
+    margin-top: 8px;
+    color: #FFE5B4;
+}
+
+.group_list {
+    width: 100%;
+    display: flex;
+    background-color: #486E93;
+    align-items: center;
+    height: 200px;
+}
+
+.group_list > img {
+    height: 100%;
+    margin-right: 60px;
+}
+
+/* 导航栏容器样式 */
+.outside {
+    width: 100%;
+    height: 65px;
+    background-color: #174366;
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    box-sizing: border-box; /* 包含内边距和边框 */
+    padding: 0 20px; /* 为导航栏添加左右内边距 */
+    overflow: hidden; /* 防止内容溢出 */
+    white-space: nowrap; /* 防止内容换行 */
+}
+
+/* 导航列表样式 */
+.outside > ul {
+    display: flex;
+    justify-content: center; /* 子元素居中对齐 */
+    align-items: center; /* 垂直居中 */
+    gap: 15px; /* 减小导航项之间的间距 */
+    list-style: none; /* 移除默认的列表样式 */
+    margin: 0; /* 移除默认外边距 */
+    padding: 0; /* 移除默认内边距 */
+    max-width: 100%; /* 确保导航列表不超过容器宽度 */
+    overflow: hidden; /* 防止导航项溢出 */
+    white-space: nowrap; /* 强制导航项在一行内显示 */
+}
+
+/* 导航项样式 */
+.outside > ul > li {
+    padding: 0 5px; /* 减小每个列表项的左右内边距 */
+    display: inline-block; /* 强制每个列表项在一行内显示 */
+}
+
+/* 导航链接样式 */
+.outside > ul > li > a {
+    color: #fff;
+    text-decoration: none; /* 移除下划线 */
+    padding: 8px 12px; /* 减小链接的内边距 */
+    transition: background-color 0.3s ease; /* 添加背景色过渡效果 */
+    display: inline-block; /* 保持链接在一行 */
+}
+
+/* 悬停效果 */
+.outside > ul > li:hover {
+    background-color: #3281c2; /* 鼠标悬停时的背景颜色 */
+    border-radius: 5px; /* 添加圆角 */
+}
+
+/* 当前页面的导航项样式 */
+.outside > ul > li:nth-child(8) {
+    background-color: #486E93;
+    padding: 0 5px;
+    border-radius: 5px; /* 添加圆角 */
+}
+
+
+.container_list {
+    width: 93%;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+/* 上半部分 */
+.half {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+    margin-top: 5px;
+}
+
+.half > p {
+    color: #174366;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.half > span {
+    font-size: 13px;
+    line-height: 1.8em;
+    text-align: center;
+    display: block;
+}
+
+.half > img {
+    width: 100%;
+}
+
+/* GROUP HEAD */
+.responsible {
+    width: 100%;
+    margin-top: 5px;
+    border-top: 1px solid #A32911;
+}
+
+.responsible > h5 {
+    font-size: 13px;
+    color: #A32911;
+}
+
+.respon_list {
+    width: 100%;
+    padding: 17px 25px;
+    display: flex;
+}
+
+.respon_list > img {
+    width: 13.5%;
+}
+
+.respon_list > ul {
+    margin-left: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.respon_list > ul > li {
+    line-height: 1.8em;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.respon_list > intro {
+    margin-top: 0px;
+    display: flex;
+    text-justify: center;
+    width: 95%;
+    font-weight: normal;
+    line-height: 1.4em;
+    font-size: 16px;
+}
+
+/* PHD STUDENTS */
+.stud_list {
+    width: 97%;
+    margin: 0 auto;
+    padding: 17px 0px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.stud_list > li {
+    width: 17%;
+    display: flex;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stud_list > li img {
+    width: 80%;
+    height: 170px;
+    object-fit: cover;
+}
+
+.stud_list > li span {
+    font-size: 100%;
+    font-weight: bold;
+}
+
+/* Appendix */
+.appendix {
+    width: 100%;
+    display: flex;
+    margin-top: 50px;
+    flex-direction: column;
+    text-align: center;
+}
+
+.appendix > li span {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-justify: center;
+}
+
+/* 模块样式 */
+.journal-module {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.journal-module h3 {
+    font-size: 18px;
+    color: #174366;
+    margin-bottom: 10px;
+}
+
+.journal-module p {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* 模块样式 */
+.journal-module {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+}
+
+/* 标题样式 */
+.journal-module h3 {
+    font-size: 20px; /* 增大标题字体 */
+    color: #174366;
+    margin-bottom: 15px; /* 增加下边距 */
+}
+
+/* 描述样式 */
+.journal-module p {
+    font-size: 15px; /* 增大描述字体 */
+    color: #333;
+    margin-bottom: 20px; /* 增加下边距 */
+}
+
+/* 论文列表样式 */
+.journal-module ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px; /* 增加下边距 */
+}
+
+.journal-module ul li {
+    margin-bottom: 15px; /* 增加论文项之间的距离 */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px; /* 增加内边距 */
+    background-color: #ffffff; /* 白色背景 */
+    border: 1px solid #ddd; /* 添加边框 */
+    border-radius: 4px; /* 圆角 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* 添加轻微阴影 */
+}
+
+/* 按钮样式 */
+.journal-module button {
+    background-color: #486E93;
+    color: white;
+    padding: 10px 20px; /* 增大按钮内边距 */
+    font-size: 16px; /* 增大按钮字体 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; /* 增加按钮顶部外边距 */
+    transition: background-color 0.3s ease; /* 添加过渡效果 */
+}
+
+/* 按钮悬停效果 */
+.journal-module button:hover {
+    background-color: #2F516C; /* 鼠标悬停时变色 */
+}
+
+/* 按钮容器样式 */
+.button-container {
+    display: flex;
+    justify-content: space-between; /* 按钮左右分布 */
+    gap: 20px; /* 按钮之间的间距 */
+    margin-top: 20px; /* 增加容器顶部外边距 */
+}
+
