@@ -156,7 +156,7 @@ async function downloadAllPapers4() {
     // 定义所有文件的路径
     const files = [
         './journal_club_papers/P4_JunzhuDuan_20241017/1_AutoDIAL_Automatic_Domain_Alignment_Layers.pdf',
-        './journal_club_papers/P4_JunzhuDuan_2024107/2_Motiian_Unified_Deep_Supervised_ICCV_2017_paper.pdf',
+        './journal_club_papers/P4_JunzhuDuan_20241017/2_Motiian_Unified_Deep_Supervised_ICCV_2017_paper.pdf',
         './journal_club_papers/P4_JunzhuDuan_20241017/3_Saito_Strong-Weak_Distribution_Alignment_for_Adaptive_Object_Detection_CVPR_2019_paper.pdf',
         './journal_club_papers/P4_JunzhuDuan_20241017/4_Zhu_Adapting_Object_Detectors_via_Selective_Cross-Domain_Alignment_CVPR_2019_paper.pdf',
         './journal_club_papers/P4_JunzhuDuan_20241017/5_Pixel_and_feature_level_based_domain_adaptation_for_object_detection.pdf'
