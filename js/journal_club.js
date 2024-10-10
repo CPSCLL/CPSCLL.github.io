@@ -151,15 +151,15 @@ async function downloadAllPapers3() {
 
 async function downloadAllPapers4() {
     const zip = new JSZip();
-    const folder = zip.folder("Papers_JunzhuDuan_20241018"); // 创建一个文件夹来存储所有论文
+    const folder = zip.folder("Papers_JunzhuDuan_20241017"); // 创建一个文件夹来存储所有论文
 
     // 定义所有文件的路径
     const files = [
-        './journal_club_papers/P4_JunzhuDuan_20241018/1_AutoDIAL_Automatic_Domain_Alignment_Layers.pdf',
-        './journal_club_papers/P4_JunzhuDuan_20241018/2_Motiian_Unified_Deep_Supervised_ICCV_2017_paper.pdf',
-        './journal_club_papers/P4_JunzhuDuan_20241018/3_Saito_Strong-Weak_Distribution_Alignment_for_Adaptive_Object_Detection_CVPR_2019_paper.pdf',
-        './journal_club_papers/P4_JunzhuDuan_20241018/4_Zhu_Adapting_Object_Detectors_via_Selective_Cross-Domain_Alignment_CVPR_2019_paper.pdf',
-        './journal_club_papers/P4_JunzhuDuan_20241018/5_Pixel_and_feature_level_based_domain_adaptation_for_object_detection.pdf'
+        './journal_club_papers/P4_JunzhuDuan_20241017/1_AutoDIAL_Automatic_Domain_Alignment_Layers.pdf',
+        './journal_club_papers/P4_JunzhuDuan_2024107/2_Motiian_Unified_Deep_Supervised_ICCV_2017_paper.pdf',
+        './journal_club_papers/P4_JunzhuDuan_20241017/3_Saito_Strong-Weak_Distribution_Alignment_for_Adaptive_Object_Detection_CVPR_2019_paper.pdf',
+        './journal_club_papers/P4_JunzhuDuan_20241017/4_Zhu_Adapting_Object_Detectors_via_Selective_Cross-Domain_Alignment_CVPR_2019_paper.pdf',
+        './journal_club_papers/P4_JunzhuDuan_20241017/5_Pixel_and_feature_level_based_domain_adaptation_for_object_detection.pdf'
     ];
 
     try {
@@ -174,7 +174,7 @@ async function downloadAllPapers4() {
 
         // 生成ZIP文件并触发下载
         zip.generateAsync({ type: 'blob' }).then(function(content) {
-            saveAs(content, "Papers_JunzhuDuan_20241018.zip"); // 使用FileSaver.js保存文件
+            saveAs(content, "Papers_JunzhuDuan_20241017.zip"); // 使用FileSaver.js保存文件
         });
     } catch (error) {
         console.error('Error downloading files:', error);
