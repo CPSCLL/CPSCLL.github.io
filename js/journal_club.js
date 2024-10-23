@@ -182,3 +182,35 @@ async function downloadAllPapers4() {
     }
 }
 
+async function downloadAllPapers5() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_MohanNiu_20241031"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P5_MohanNiu_20241031/1_PMIC_Improving_Multi-Agent_Reinforcement_Learning_with_Progressive_Mutual_Information_Collaboration.pdf',
+        './journal_club_papers/P5_MohanNiu_20241031/2_Effective_and_Stable_Role-Based_Multi-Agent_Collaboration_by_Structural_Information_Principles.pdf',
+        './journal_club_papers/P5_MohanNiu_20241031/3_Maximum_Entropy_Heterogeneous-Agent_Reinforcement_Learning.pdf',
+        './journal_club_papers/P5_MohanNiu_20241031/4_Attention-Guided_Contrastive_Role_Representations_for_Multi-Agent_Reinforcement_Learning.pdf',
+        './journal_club_papers/P5_MohanNiu_20241031/5_STAR_Spatio-Temporal_State_Compression_for_Multi-Agent_Tasks.pdf'
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_MohanNiu_20241031.zip"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
