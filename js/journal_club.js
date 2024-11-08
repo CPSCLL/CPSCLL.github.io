@@ -214,3 +214,35 @@ async function downloadAllPapers5() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers6() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_JinyiLiu_20241114"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P6_JinyiLiu_20241114/1_maven-multi-agent-variational-exploration.pdf',
+        './journal_club_papers/P5_MohanNiu_20241031/2_Influence-based multi-agent Exploration.pdf',
+        './journal_club_papers/P5_MohanNiu_20241031/3_Settling Decentralized Multi-Agent Coordinated Exploration by Novelty Sharing.pdf',
+        './journal_club_papers/P5_MohanNiu_20241031/4_Population-Based Diverse Exploration for Sparse-Reward Multi-Agent Tasks.pdf',
+        './journal_club_papers/P5_MohanNiu_20241031/5_Episodic Multi-agent Reinforcement Learning with Curiosity-driven Exploration.pdf'
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_JinyiLiu_20241114.zip"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
