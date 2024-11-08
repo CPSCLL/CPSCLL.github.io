@@ -222,10 +222,10 @@ async function downloadAllPapers6() {
     // 定义所有文件的路径
     const files = [
         './journal_club_papers/P6_JinyiLiu_20241114/1_maven-multi-agent-variational-exploration.pdf',
-        './journal_club_papers/P5_MohanNiu_20241031/2_Influence-based multi-agent Exploration.pdf',
-        './journal_club_papers/P5_MohanNiu_20241031/3_Settling Decentralized Multi-Agent Coordinated Exploration by Novelty Sharing.pdf',
-        './journal_club_papers/P5_MohanNiu_20241031/4_Population-Based Diverse Exploration for Sparse-Reward Multi-Agent Tasks.pdf',
-        './journal_club_papers/P5_MohanNiu_20241031/5_Episodic Multi-agent Reinforcement Learning with Curiosity-driven Exploration.pdf'
+        './journal_club_papers/P6_JinyiLiu_20241114/2_Influence-based multi-agent Exploration.pdf',
+        './journal_club_papers/P6_JinyiLiu_20241114/3_Settling Decentralized Multi-Agent Coordinated Exploration by Novelty Sharing.pdf',
+        './journal_club_papers/P6_JinyiLiu_20241114/4_Population-Based Diverse Exploration for Sparse-Reward Multi-Agent Tasks.pdf',
+        './journal_club_papers/P6_JinyiLiu_20241114/5_Episodic Multi-agent Reinforcement Learning with Curiosity-driven Exploration.pdf'
     ];
 
     try {
