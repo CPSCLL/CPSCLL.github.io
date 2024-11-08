@@ -246,3 +246,4 @@ async function downloadAllPapers6() {
         console.error('Error downloading files:', error);
         alert('Failed to download files. Please check the file paths or try again later.');
     }
+}
