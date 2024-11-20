@@ -250,15 +250,15 @@ async function downloadAllPapers6() {
 
 async function downloadAllPapers7() {
     const zip = new JSZip();
-    const folder = zip.folder("Papers_RuichongMa_20241128"); // 创建一个文件夹来存储所有论文
+    const folder = zip.folder("Papers_RuichongMa_20241127"); // 创建一个文件夹来存储所有论文
 
     // 定义所有文件的路径
     const files = [
-        './journal_club_papers/P7_RuichongMa_20241128/1-Deep reinforcement learning for dynamic flexible job shop scheduling problem considering variable processing times.pdf',
-        './journal_club_papers/P7_RuichongMa_20241128/2-Dynamic scheduling for flexible job shop using a deep reinforcement learning approach.pdf',
-        './journal_club_papers/P7_RuichongMa_20241128/3-Dynamic multi-objective scheduling for flexible job shop by deep reinforcement learning.pdf',
-        './journal_club_papers/P7_RuichongMa_20241128/4-An adaptive multi-objective multi-task scheduling method by hierarchical deep reinforcement learning.pdf',
-        './journal_club_papers/P7_RuichongMa_20241128/5-Real-Time Scheduling for Dynamic Partial-No-Wait Multi objective Flexible Job Shop by Deep Reinforcement Learning.pdf'
+        './journal_club_papers/P7_RuichongMa_20241127/1-Deep reinforcement learning for dynamic flexible job shop scheduling problem considering variable processing times.pdf',
+        './journal_club_papers/P7_RuichongMa_20241127/2-Dynamic scheduling for flexible job shop using a deep reinforcement learning approach.pdf',
+        './journal_club_papers/P7_RuichongMa_20241127/3-Dynamic multi-objective scheduling for flexible job shop by deep reinforcement learning.pdf',
+        './journal_club_papers/P7_RuichongMa_20241127/4-An adaptive multi-objective multi-task scheduling method by hierarchical deep reinforcement learning.pdf',
+        './journal_club_papers/P7_RuichongMa_20241127/5-Real-Time Scheduling for Dynamic Partial-No-Wait Multi objective Flexible Job Shop by Deep Reinforcement Learning.pdf'
     ];
 
     try {
@@ -273,7 +273,7 @@ async function downloadAllPapers7() {
 
         // 生成ZIP文件并触发下载
         zip.generateAsync({ type: 'blob' }).then(function(content) {
-            saveAs(content, "Papers_RuichongMa_20241128.zip"); // 使用FileSaver.js保存文件
+            saveAs(content, "Papers_RuichongMa_20241127.zip"); // 使用FileSaver.js保存文件
         });
     } catch (error) {
         console.error('Error downloading files:', error);
