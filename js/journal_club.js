@@ -254,11 +254,11 @@ async function downloadAllPapers7() {
 
     // 定义所有文件的路径
     const files = [
-        './journal_club_papers/P7_RuichongMa_20241127/1-Deep reinforcement learning for dynamic flexible job shop scheduling problem considering variable processing times.pdf',
-        './journal_club_papers/P7_RuichongMa_20241127/2-Dynamic scheduling for flexible job shop using a deep reinforcement learning approach.pdf',
-        './journal_club_papers/P7_RuichongMa_20241127/3-Dynamic multi-objective scheduling for flexible job shop by deep reinforcement learning.pdf',
-        './journal_club_papers/P7_RuichongMa_20241127/4-An adaptive multi-objective multi-task scheduling method by hierarchical deep reinforcement learning.pdf',
-        './journal_club_papers/P7_RuichongMa_20241127/5-Real-Time Scheduling for Dynamic Partial-No-Wait Multi objective Flexible Job Shop by Deep Reinforcement Learning.pdf'
+        './journal_club_papers/P7_RuichongMa_20241128/1-Deep reinforcement learning for dynamic flexible job shop scheduling problem considering variable processing times.pdf',
+        './journal_club_papers/P7_RuichongMa_20241128/2-Dynamic scheduling for flexible job shop using a deep reinforcement learning approach.pdf',
+        './journal_club_papers/P7_RuichongMa_20241128/3-Dynamic multi-objective scheduling for flexible job shop by deep reinforcement learning.pdf',
+        './journal_club_papers/P7_RuichongMa_20241128/4-An adaptive multi-objective multi-task scheduling method by hierarchical deep reinforcement learning.pdf',
+        './journal_club_papers/P7_RuichongMa_20241128/5-Real-Time Scheduling for Dynamic Partial-No-Wait Multi objective Flexible Job Shop by Deep Reinforcement Learning.pdf'
     ];
 
     try {
@@ -274,6 +274,39 @@ async function downloadAllPapers7() {
         // 生成ZIP文件并触发下载
         zip.generateAsync({ type: 'blob' }).then(function(content) {
             saveAs(content, "Papers_RuichongMa_20241128.zip"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
+
+async function downloadAllPapers8() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_JunnanHe_20241213"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P8_JunnanHe_20241213/1.Deep Multi-view Information Bottleneck.pdf',
+        './journal_club_papers/P8_JunnanHe_20241213/2.Cross-View Representation Learning for Multi-View Logo Classification with Information Bottleneck.pdf',
+        './journal_club_papers/P8_JunnanHe_20241213/3.Learning Robust Representations via Multi-View Information Bottleneck.pdf',
+        './journal_club_papers/P8_JunnanHe_20241213/4.Multi-View Information-Bottleneck Representation Learning.pdf',
+        './journal_club_papers/P8_JunnanHe_20241213/5.Multi-View Information Bottleneck Without Variational Approximation.pdf'
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_JunnanHe_20241213.zip"); // 使用FileSaver.js保存文件
         });
     } catch (error) {
         console.error('Error downloading files:', error);
