@@ -23,7 +23,7 @@ ul, li, ol {
 /* 中间容器 */
 .container {
     width: 1100px;
-    height: 2000px;
+    /* height: 2000px; */
     margin: 0 auto;
     background-color: #ecececfa;
 }
