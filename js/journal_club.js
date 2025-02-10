@@ -422,11 +422,11 @@ async function downloadAllPapers12() {
 
     // 定义所有文件的路径
     const files = [
-        './journal_club_papers/P12_ManLi_20250213/1_Distributed_and_Collective_Deep_Reinforcement_Learning_for_Computation_Offloading_A_Practical_Perspective.pdf',
-        './journal_club_papers/P12_ManLi_20250213/2_Joint_Computation_Offloading_and_Resource_Allocation_in_Multi-Edge_Smart_Communities_With_Personalized_Federated_Deep_Reinforcement_Learning.pdf',
-        './journal_club_papers/P12_ManLi_20250213/3_Distributed_Resource_Scheduling_for_Large-Scale_MEC_Systems_A_Multiagent_Ensemble_Deep_Reinforcement_Learning_With_Imitation_Acceleration.pdf',
-        './journal_club_papers/P12_ManLi_20250213/4_Dynamic_Scheduling_for_Stochastic_Edge-Cloud_Computing_Environments_Using_A3C_Learning_and_Residual_Recurrent_Neural_Networks.pdf',
-        './journal_club_papers/P12_ManLi_20250213/5_A_Distributed_Deep_Reinforcement_Learning_Technique_for_Application_Placement_in_Edge_and_Fog_Computing_Environments.pdf'
+        './journal_club_papers/P12_ManLi_20250213/1-A_PINN-Based_Friction-Inclusive_Dynamics_Modeling_Method_for_Industrial_Robots.pdf',
+        './journal_club_papers/P12_ManLi_20250213/2-Physics-Informed_Neural_Networks_With_Weighted_Losses_by_Uncertainty_Evaluation_for_Accurate_and_Stable_Prediction_of_Manufacturing_Systems.pdf',
+        './journal_club_papers/P12_ManLi_20250213/3-Physics-informed_learning_of_governing_equations_from_scarce_data.pdf',
+        './journal_club_papers/P12_ManLi_20250213/4-Residual-Connected_Physics-Informed_Neural_Network_For_Anti-Noise_Wind_Field_Reconstruction.pdf',
+        './journal_club_papers/P12_ManLi_20250213/5-Transfer_learning_based_physics-informed_neural_networks_for_solving_inverse_problems_in_engineering_structures_under_different_loading_scenarios.pdf'
         
     ];
 
