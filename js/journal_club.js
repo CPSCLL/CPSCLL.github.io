@@ -422,7 +422,7 @@ async function downloadAllPapers12() {
 
     // 定义所有文件的路径
     const files = [
-        './journal_club_papers/1_A_Co-Evolution_Algorithm_With_Dueling_Reinforcement_Learning_Mechanism_for_the_Energy-Aware_Distributed_Heterogeneous_Flexible_Flow-Shop_Scheduling_Problem.pdf',
+        './journal_club_papers/P13_JiarongDu_20250228/1_A_Co-Evolution_Algorithm_With_Dueling_Reinforcement_Learning_Mechanism_for_the_Energy-Aware_Distributed_Heterogeneous_Flexible_Flow-Shop_Scheduling_Problem.pdf',
         './journal_club_papers/P13_JiarongDu_20250228/2_NeurIPS-2021-a-hierarchical-reinforcement-learning-based-optimization-framework-for-large-scale-dynamic-pickup-and-delivery-problems-Paper.pdf',
         './journal_club_papers/P13_JiarongDu_20250228/3_A novel priority dispatch rule generation method based on graph neuralnetwork and reinforcement learning for distributed job-shop scheduling.pdf',
         './journal_club_papers/P13_JiarongDu_20250228/4-4_An end-to-end deep reinforcement learning method based on graph neuralnetwork for distributed job-shop scheduling problem.pdf',
