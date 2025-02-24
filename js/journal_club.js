@@ -422,11 +422,11 @@ async function downloadAllPapers12() {
 
     // 定义所有文件的路径
     const files = [
-        './journal_club_papers/P12_ManLi_20250213/1-A_PINN-Based_Friction-Inclusive_Dynamics_Modeling_Method_for_Industrial_Robots.pdf',
-        './journal_club_papers/P12_ManLi_20250213/2-Physics-Informed_Neural_Networks_With_Weighted_Losses_by_Uncertainty_Evaluation_for_Accurate_and_Stable_Prediction_of_Manufacturing_Systems.pdf',
-        './journal_club_papers/P12_ManLi_20250213/3-Physics-informed_learning_of_governing_equations_from_scarce_data.pdf',
-        './journal_club_papers/P12_ManLi_20250213/4-Residual-Connected_Physics-Informed_Neural_Network_For_Anti-Noise_Wind_Field_Reconstruction.pdf',
-        './journal_club_papers/P12_ManLi_20250213/5-Transfer_learning_based_physics-informed_neural_networks_for_solving_inverse_problems_in_engineering_structures_under_different_loading_scenarios.pdf'
+        './journal_club_papers/1_A_Co-Evolution_Algorithm_With_Dueling_Reinforcement_Learning_Mechanism_for_the_Energy-Aware_Distributed_Heterogeneous_Flexible_Flow-Shop_Scheduling_Problem.pdf',
+        './journal_club_papers/P13_JiarongDu_20250228/2_NeurIPS-2021-a-hierarchical-reinforcement-learning-based-optimization-framework-for-large-scale-dynamic-pickup-and-delivery-problems-Paper.pdf',
+        './journal_club_papers/P13_JiarongDu_20250228/3_A novel priority dispatch rule generation method based on graph neuralnetwork and reinforcement learning for distributed job-shop scheduling.pdf',
+        './journal_club_papers/P13_JiarongDu_20250228/4-4_An end-to-end deep reinforcement learning method based on graph neuralnetwork for distributed job-shop scheduling problem.pdf',
+        './journal_club_papers/P13_JiarongDu_20250228/5_Distributed_Real-Time_Scheduling_in_Cloud_Manufacturing_by_Deep_Reinforcement_Learning.pdf'
         
     ];
 
