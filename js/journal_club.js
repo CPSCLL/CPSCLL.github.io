@@ -416,9 +416,9 @@ async function downloadAllPapers11() {
     }
 }
 
-async function downloadAllPapers12() {
+async function downloadAllPapers13() {
     const zip = new JSZip();
-    const folder = zip.folder("Papers_ManLi_20250213"); // 创建一个文件夹来存储所有论文
+    const folder = zip.folder("Papers_JiarongDu_20250228"); // 创建一个文件夹来存储所有论文
 
     // 定义所有文件的路径
     const files = [
@@ -442,7 +442,7 @@ async function downloadAllPapers12() {
 
         // 生成ZIP文件并触发下载
         zip.generateAsync({ type: 'blob' }).then(function(content) {
-            saveAs(content, "Papers_ManLi_20250213"); // 使用FileSaver.js保存文件
+            saveAs(content, "Papers_JiarongDu_20250228"); // 使用FileSaver.js保存文件
         });
     } catch (error) {
         console.error('Error downloading files:', error);
