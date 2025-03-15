@@ -483,3 +483,37 @@ async function downloadAllPapers13() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers14() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_RuichongMa_20250317"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P14_RuichongMa_20250317/1_A novel collaborative agent reinforcement learning framework based on an attention mechanism and disjunctive graph embedding for flexible job shop scheduling problem.pdf',
+        './journal_club_papers/P14_RuichongMa_20250317/2_Dynamic job shop scheduling based on deep reinforcement learning for multiagent manufacturing systems.pdf',
+        './journal_club_papers/P14_RuichongMa_20250317/3_A_Hierarchical_Multi-Action_Deep_Reinforcement_Learning_Method_for_Dynamic_Distributed_Job-Shop_Scheduling_Problem_With_Job_Arrivals.pdf',
+        './journal_club_papers/P14_RuichongMa_20250317/4_Real-Time_Scheduling_for_Flexible_Job_Shop_With_AGVs_Using_Multiagent_Reinforcement_Learning_and_Efficient_Action_Decoding.pdf',
+        './journal_club_papers/P14_RuichongMa_20250317/5_A deep multi-agent reinforcement learning approach to solve dynamic job shop scheduling problem.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_RuichongMa_20250317"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
