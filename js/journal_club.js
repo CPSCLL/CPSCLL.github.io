@@ -517,3 +517,37 @@ async function downloadAllPapers14() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers15() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_JinyiLiu_20250331"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P15_JinyiLiu_20250331/1-Neighborhood_curiosity-based_exploration_in_multi-agent_reinforcement_learning.pdf',
+        './journal_club_papers/P15_JinyiLiu_20250331/2-WToE_Learning_When_to_Explore_in_Multiagent_Reinforcement_Learning.pdf',
+        './journal_club_papers/P15_JinyiLiu_20250331/3-QFuture_Learning_Future_Expectation_Cognition_in_Multiagent_Reinforcement_Learning.pdf',
+        './journal_club_papers/P15_JinyiLiu_20250331/4-Attentive_Relational_State_Representation_in_Decentralized_Multiagent_Reinforcement_Learning.pdf',
+        './journal_club_papers/P15_JinyiLiu_20250331/5-Extrinsic-and-Intrinsic_Reward-Based_Multi-Agent_Reinforcement_Learning_for_Multi-UAV_Cooperative_Target_Encirclement.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_JinyiLiu_20250331"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
