@@ -551,3 +551,37 @@ async function downloadAllPapers15() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers16() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_JunnanHe_20250414"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P16_JunnanHe_20250414/1_Autoformer.pdf',
+        './journal_club_papers/P16_JunnanHe_20250414/2_Dlinear.pdf',
+        './journal_club_papers/P16_JunnanHe_20250414/3_Informer.pdf',
+        './journal_club_papers/P16_JunnanHe_20250414/4_PatchTST.pdf',
+        './journal_club_papers/P16_JunnanHe_20250414/5_PETformer.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_JunnanHe_20250414"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
