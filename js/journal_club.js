@@ -585,3 +585,37 @@ async function downloadAllPapers16() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers17() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_MohanNiu_20250421"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P17_MohanNiu_20250421/1-Meta_Learning_Task_Representation_in_Multiagent_Reinforcement_Learning_From_Global_Inference_to_Local_Inference.pdf',
+        './journal_club_papers/P17_MohanNiu_20250421/2-Multi-Task_Multi-Agent_Reinforcement_Learning_With_Interaction_and_Task_Representations.pdf',
+        './journal_club_papers/P17_MohanNiu_20250421/3-NVIF_Neighboring_Variational_Information_Flow_for_Cooperative_Large-Scale_Multiagent_Reinforcement_Learning.pdf',
+        './journal_club_papers/P17_MohanNiu_20250421/4-State-Temporal_Compression_in_Reinforcement_Learning_With_the_Reward-Restricted_Geodesic_Metric.pdf',
+        './journal_club_papers/P17_MohanNiu_20250421/5-A_Robust_Mean-Field_Actor-Critic_Reinforcement_Learning_Against_Adversarial_Perturbations_on_Agent_States.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_MohanNiu_20250421"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
