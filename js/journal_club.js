@@ -619,3 +619,37 @@ async function downloadAllPapers17() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers18() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_JinghaoLiu_20250505"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P18_JinghaoLiu_20250505/1.Distributed_Partial_Quantum_Consensus_of_Qubit_Networks_With_Connected_Topologies.pdf',
+        './journal_club_papers/P18_JinghaoLiu_20250505/2.Entanglement-Controlled_Quantum_Federated_Learning.pdf',
+        './journal_club_papers/P18_JinghaoLiu_20250505/3.Stability_analysis_of_quantum_systems_A_Lyapunov_criterion_and_an_invariance_principle.pdf',
+        './journal_club_papers/P18_JinghaoLiu_20250505/4.Towards provably efficient quantum algorithms for large-scale machine-learning models.pdf',
+        './journal_club_papers/P18_JinghaoLiu_20250505/5.Learning_to_Learn_Variational_Quantum_Algorithm.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_JinghaoLiu_20250505"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
