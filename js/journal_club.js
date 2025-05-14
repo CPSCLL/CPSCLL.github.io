@@ -653,3 +653,37 @@ async function downloadAllPapers18() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers19() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_ZhichengChen_20250519"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P19_ZhichengChen_20250519/1-Balancing_Privacy_and_Accuracy_Using_Significant_Gradient_Protection_in_Federated_Learning.pdf',
+        './journal_club_papers/P19_ZhichengChen_20250519/2-CGoFed_Constrained_Gradient_Optimization_Strategy_for_Federated_Class_Incremental_Learning.pdf',
+        './journal_club_papers/P19_ZhichengChen_20250519/3-Federated_Gradient_Matching_Pursuit.pdf',
+        './journal_club_papers/P19_ZhichengChen_20250519/4-Ma_Layer-Wised_Model_Aggregation_for_Personalized_Federated_Learning_CVPR_2022_paper.pdf',
+        './journal_club_papers/P19_ZhichengChen_20250519/5-Towards Layer-Wise Personalized Federated Learning Adaptive Layer Disentanglement via Conflicting G.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_ZhichengChen_20250519"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
