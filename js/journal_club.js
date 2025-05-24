@@ -687,3 +687,37 @@ async function downloadAllPapers19() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers20() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_QingheDong_20250602"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P20_QingheDong_20250602/1.An_Offline-Transfer-Online_Framework_for_Cloud-Edge_Collaborative_Distributed_Reinforcement_Learning.pdf',
+        './journal_club_papers/P20_QingheDong_20250602/2.Cross-Domain Adaptive Transfer Reinforcement.pdf',
+        './journal_club_papers/P20_QingheDong_20250602/3.Domain Adaptation In Reinforcement Learning Via Latent Unified State.pdf',
+        './journal_club_papers/P20_QingheDong_20250602/4.Lateral_Transfer_Learning_for_Multiagent_Reinforcement_Learning.pdf',
+        './journal_club_papers/P20_QingheDong_20250602/5.Reinforcement_Learning_With_Adaptive_Policy_Gradient_Transfer_Across_Heterogeneous_Problems.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_QingheDong_20250602"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
