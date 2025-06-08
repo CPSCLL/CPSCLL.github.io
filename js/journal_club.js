@@ -721,3 +721,37 @@ async function downloadAllPapers20() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers21() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_ManLi_20250616"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P21_ManLi_20250609/1_Denoising_Hamiltonian_Network_for_Physical_Reasoning.pdf',
+        './journal_club_papers/P21_ManLi_20250609/2_General_Hamiltonian_Neural_Networks_for_Dynamic_Modeling_Handling_Sophisticated_Constraints_Automatically_and_Achieving_Coordinates_Free.pdf',
+        './journal_club_papers/P21_ManLi_20250609/3_Distance-Informed_Neural_Eikonal_Solver_for_Reactive_Dynamic_User-Equilibrium_of_Macroscopic_Continuum_Traffic_Flow_Model.pdf',
+        './journal_club_papers/P21_ManLi_20250609/4_Kolmogorov-Arnold_Network_for_Solving_2-D_Magnetostatic_Problems.pdf',
+        './journal_club_papers/P21_ManLi_20250609/5_Deep_Statistical_Solver_for_Distribution_System_State_Estimation.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_ManLi_20250616"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
