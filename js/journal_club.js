@@ -33,7 +33,10 @@ function login() {
         'ljh': 'bjut666',
         'lm': 'bjut666',
         'dqh': 'bjut666',
-        'czc': 'bjut666'        
+        'czc': 'bjut666',
+        'bgy': 'bjut666',
+        'wyx': 'bjut666',
+        'dc': 'bjut666',
         // 添加更多用户
     };
 
@@ -749,6 +752,40 @@ async function downloadAllPapers21() {
         // 生成ZIP文件并触发下载
         zip.generateAsync({ type: 'blob' }).then(function(content) {
             saveAs(content, "Papers_ManLi_20250616"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
+
+async function downloadAllPapers22() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_JiarongDu_20250924"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P22_JiarongDu_20250924/1_Co-Evolution_With_Deep_Reinforcement_Learning_for_Energy-Aware_Distributed_Heterogeneous_Flexible_Job_Shop_Scheduling.pdf',
+        './journal_club_papers/P22_JiarongDu_20250924/2_HGNP A PCA-based heterogeneous graph neural network for a family distributed flexible job shop.pdf',
+        './journal_club_papers/P22_JiarongDu_20250924/3_Distributed heterogeneous flexible job-shop scheduling problem considering automated guided vehicle transportation via improved deep Q network.pdf',
+        './journal_club_papers/P22_JiarongDu_20250924/4_Energy-efficient_Distributed_Heterogeneous_Hybrid_Flow-shop_Scheduling_Using_Graph_Neural_Network_and_Deep_Reinforcement_Learning.pdf',
+        './journal_club_papers/P22_JiarongDu_20250924/5_An_End-to-End_Framework_for_Energy-Efficient_Cascaded_Dual-Shop_Collaborative_Scheduling_With_Mating_Operations.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_JiarongDu_20250924"); // 使用FileSaver.js保存文件
         });
     } catch (error) {
         console.error('Error downloading files:', error);
