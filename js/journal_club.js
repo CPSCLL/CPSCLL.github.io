@@ -792,3 +792,37 @@ async function downloadAllPapers22() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers22() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_JunnanHe_20251008"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P23_JunnanHe_20251008/1_Remaining_Useful_Life_Prediction_Based_on_Intentional_Noise_Injection_and_Feature_Reconstruction.pdf',
+        './journal_club_papers/P23_JunnanHe_20251008/2_Multibranch_and_Multiscale _CNN_for_Fault_Diagnosis_of_Wheelset_Bearings_under_Strong_Noise_and_Variable_Load_Condition.pdf',
+        './journal_club_papers/P23_JunnanHe_20251008/3_Fourier_Feature_Refiner_Network_with_Soft_Thresholding_for_Machinery_Fault_Diagnosi_ under_Highly_Noisy_Conditions.pdf',
+        './journal_club_papers/P23_JunnanHe_20251008/4_A_Decision_Fusion_SWT-RF_Method_for_Rolling_Bearing_Enhanced_Diagnosis_Under_Low-Quality_Data.pdf',
+        './journal_club_papers/P23_JunnanHe_20251008/5_Fusion-driven_Fault_Diagnosis_Based_on_Adaptive_Tuning_Feature_Mode_Decomposition_and_Synergy_Graph_Enhanced_Transformer_for_Bearings_under_Noisy_Conditions.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_JunnanHe_20251008"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
