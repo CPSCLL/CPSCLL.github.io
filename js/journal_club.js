@@ -793,7 +793,7 @@ async function downloadAllPapers22() {
     }
 }
 
-async function downloadAllPapers22() {
+async function downloadAllPapers23() {
     const zip = new JSZip();
     const folder = zip.folder("Papers_JunnanHe_20251008"); // 创建一个文件夹来存储所有论文
 
@@ -826,3 +826,38 @@ async function downloadAllPapers22() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers24() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_JinyiLiu_20251021"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P24_JinyiLiu_20251021/1_A_Decentralized_Communication_Framework_based_on_Dual-Level Recurrence for Multi-Agent Reinforcement Learning.pdf',
+        './journal_club_papers/P24_JinyiLiu_20251021/2_Fully_Decentralized_Multiagent_Communication_via_Causal_Inference.pdf',
+        './journal_club_papers/P24_JinyiLiu_20251021/3_Learning_Communication_for_Cooperation_in_Dynamic_Agent-Number_Environment.pdf',
+        './journal_club_papers/P24_JinyiLiu_20251021/4_Communication-Efficient_Decentralized_Multi-Agent_Reinforcement_Learning_for_Cooperative_Adaptive_Cruise_Control.pdf',
+        './journal_club_papers/P24_JinyiLiu_20251021/5_NVIF_Neighboring_Variational_Information_Flow_for_Cooperative_Large-Scale_Multiagent_Reinforcement_Learning.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_JinyiLiu_20251021"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
+
