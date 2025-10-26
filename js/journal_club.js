@@ -861,3 +861,37 @@ async function downloadAllPapers24() {
     }
 }
 
+async function downloadAllPapers25() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_RuichongMa_20251104"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P25_RuichongMa_20251104/1_Deep reinforcement learning-based energy-aware disassembly planning for end-of-life products with stimuli-activated self-disassembly.pdf',
+        './journal_club_papers/P25_RuichongMa_20251104/2_Dynamic_Balancing_of_U-Shaped_Robotic_Disassembly_Lines_Using_an_Effective_Deep_Reinforcement_Learning_Approach.pdf',
+        './journal_club_papers/P25_RuichongMa_20251104/3_Modelling and condition-based control of a flexible and hybrid disassembly system with manual and autonomous workstations using reinforcement learning.pdf',
+        './journal_club_papers/P25_RuichongMa_20251104/4_Reinforcement learning for Hybrid Disassembly Line Balancing Problems.pdf',
+        './journal_club_papers/P25_RuichongMa_20251104/5_Reinforcement_Learning-Based_Selective_Disassembly_Sequence_Planning_for_the_End-of-Life_Products_With_Structure_Uncertainty.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_RuichongMa_20251104"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
+
