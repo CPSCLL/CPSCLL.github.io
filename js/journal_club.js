@@ -895,3 +895,36 @@ async function downloadAllPapers25() {
     }
 }
 
+async function downloadAllPapers26() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_MohanNiu_20251118"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P26_MohanNiu_20251118/1_Compact_Goal_Representation_Learning_via_Information_Bottleneck_in_Goal-Conditioned_Reinforcement_Learning.pdf',
+        './journal_club_papers/P26_MohanNiu_20251118/2_GlobalLocal_Decomposition_of_Contextual_Representations_in_Meta-Reinforcement_Learning.pdf',
+        './journal_club_papers/P26_MohanNiu_20251118/3_Multiagent_Reinforcement_Learning_With_Graphical_Mutual_Information_Maximization.pdf',
+        './journal_club_papers/P26_MohanNiu_20251118/4_Long-Term_Feature_Extraction_via_Frequency_Prediction_for_Efficient_Reinforcement_Learning.pdf',
+        './journal_club_papers/P26_MohanNiu_20251118/5_Neighboring_State-Aware_Policy_for_Deep_Reinforcement_Learning.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_MohanNiu_20251118"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
