@@ -931,7 +931,7 @@ async function downloadAllPapers26() {
 
 async function downloadAllPapers27() {
     const zip = new JSZip();
-    const folder = zip.folder("Papers_MohanNiu_20251118"); // 创建一个文件夹来存储所有论文
+    const folder = zip.folder("Papers_JinghaoLiu_20251202"); // 创建一个文件夹来存储所有论文
 
     // 定义所有文件的路径
     const files = [
@@ -955,7 +955,7 @@ async function downloadAllPapers27() {
 
         // 生成ZIP文件并触发下载
         zip.generateAsync({ type: 'blob' }).then(function(content) {
-            saveAs(content, "Papers_MohanNiu_20251118"); // 使用FileSaver.js保存文件
+            saveAs(content, "Papers_JinghaoLiu_20251202"); // 使用FileSaver.js保存文件
         });
     } catch (error) {
         console.error('Error downloading files:', error);
