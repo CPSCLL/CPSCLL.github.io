@@ -928,3 +928,37 @@ async function downloadAllPapers26() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers27() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_MohanNiu_20251118"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P27_JinghaoLiu_20251202/1.Quantum_Robust_Optimal_Control_for_Linear_Complex_Quantum_Systems_With_Uncertainties.pdf',
+        './journal_club_papers/P27_JinghaoLiu_20251202/2.Coherent robust H∞ control of linear quantum systems with uncertainties in the Hamiltonian and coupling operators.pdf',
+        './journal_club_papers/P27_JinghaoLiu_20251202/3.Coherent_Hinfty_Control_for_Linear_Quantum_Systems_With_Uncertainties_in_the_Interaction_Hamiltonian.pdf',
+        './journal_club_papers/P27_JinghaoLiu_20251202/4.Robust and optimal control of open quantum systems.pdf',
+        './journal_club_papers/P27_JinghaoLiu_20251202/5.Robust_Control_Performance_for_Open_Quantum_Systems.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_MohanNiu_20251118"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
