@@ -962,3 +962,37 @@ async function downloadAllPapers27() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers28() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_QingheDong_20251216"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P28_QingheDong_20251216/1.Dynamic scheduling in flexible and hybrid disassembly systems with manual and automated workstations using reward-shaping enhanced reinforcement learning.pdf',
+        './journal_club_papers/P28_QingheDong_20251216/2.Deep reinforcement learning-based approach for dynamic disassembly scheduling of end-of-life products with stimuli-activated self-disassembly.pdf',
+        './journal_club_papers/P28_QingheDong_20251216/3.Multi-objective reinforcement learning for dynamic balancing of two-sided human–robot collaborative disassembly lines.pdf',
+        './journal_club_papers/P28_QingheDong_20251216/4.Dynamic_Disassembly_Planning_of_End-of-Life_Products_for_HumanRobot_Collaboration_Enabled_by_Multi-Agent_Deep_Reinforcement_Learning.pdf',
+        './journal_club_papers/P28_QingheDong_20251216/5.Partially observable deep reinforcement learning for multi-agent strategy optimization of human-robot collaborative disassembly.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_QingheDong_20251216"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
