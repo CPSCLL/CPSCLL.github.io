@@ -1003,11 +1003,11 @@ async function downloadAllPapers29() {
 
     // 定义所有文件的路径
     const files = [
-        '.journal_club_papers/P29_ManLi_20251230/1-Time_Space_Separation-Based_Physics-Informed_Machine_Learning_for_Spatiotemporal_Modeling_of_Distributed_Parameter_Systems.pdf',
-        '.journal_club_papers/P29_ManLi_20251230/2-Physics-Informed_Adaptive-Weight_NBeatsx_for_Short-Term_Wind_Power_Forecasting.pdf',
-        '.journal_club_papers/P29_ManLi_20251230/3-Robust_Power_System_State_Estimation_Using_Physics-Informed_Neural_Networks.pdf',
-        '.journal_club_papers/P29_ManLi_20251230/4-Physics-Informed_Evidential_Network_A_General_Framework_for_Uncertainty_Evaluation_in_Nonlinear_Dynamic_Measurement_Systems.pdf',
-        '.journal_club_papers/P29_ManLi_20251230/5-Physics-Informed_Passive_Motion_Paradigm_for_Parallel_Robots_A_High-Precision_Motor-Primitives_Framework.pdf'
+        './journal_club_papers/P29_ManLi_20251230/1-Time_Space_Separation-Based_Physics-Informed_Machine_Learning_for_Spatiotemporal_Modeling_of_Distributed_Parameter_Systems.pdf',
+        './journal_club_papers/P29_ManLi_20251230/2-Physics-Informed_Adaptive-Weight_NBeatsx_for_Short-Term_Wind_Power_Forecasting.pdf',
+        './journal_club_papers/P29_ManLi_20251230/3-Robust_Power_System_State_Estimation_Using_Physics-Informed_Neural_Networks.pdf',
+        './journal_club_papers/P29_ManLi_20251230/4-Physics-Informed_Evidential_Network_A_General_Framework_for_Uncertainty_Evaluation_in_Nonlinear_Dynamic_Measurement_Systems.pdf',
+        './journal_club_papers/P29_ManLi_20251230/5-Physics-Informed_Passive_Motion_Paradigm_for_Parallel_Robots_A_High-Precision_Motor-Primitives_Framework.pdf'
         
     ];
 
