@@ -1030,3 +1030,37 @@ async function downloadAllPapers29() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers30() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_ZhichengChen_20260113"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P30_ZhichengChen_20260113/1.Beyond Local Sharpness Communication-Efficient Global Sharpness-aware Minimization for Federated Learning.pdf',
+        './journal_club_papers/P30_ZhichengChen_20260113/2.Rethinking the Flat Minima Searching in Federated Learning.pdf',
+        './journal_club_papers/P30_ZhichengChen_20260113/3.SADDLe Sharpness-Aware Decentralized Deep Learning with Heterogeneous data.pdf',
+        './journal_club_papers/P30_ZhichengChen_20260113/4.Escaping Saddle Points in Heterogeneous Federated Learning via Distributed SGD with Communication Compression.pdf',
+        './journal_club_papers/P30_ZhichengChen_20260113/5.Enabling Privacy-Preserving Edge AI Federated Learning Enhanced with Forward-Forward Algorithm.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_ZhichengChen_20260113"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
