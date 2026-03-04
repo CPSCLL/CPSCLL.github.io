@@ -1064,3 +1064,37 @@ async function downloadAllPapers30() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers31() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_YixiWei_20260311"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P31_YixiWei_20260311/1_PriSTI_A_Conditional_Diffusion_Framework_for_Spatiotemporal_Imputation.pdf',
+        './journal_club_papers/P31_YixiWei_20260311/2_Conditional_Diffusion_Model_with_Nonlinear_Data_Transformation_for_Time_Series_Forecasting.pdf',
+        './journal_club_papers/P31_YixiWei_20260311/3_Lscd_Lomb-scargle_conditioned_diffusion_for_time_series_imputation.pdf',
+        './journal_club_papers/P31_YixiWei_20260311/4_Conditional_Time_Series_Diffusion_Model_for_High-Speed_Train_Multi-Sensor_Signals_Imputation.pdf',
+        './journal_club_papers/P31_YixiWei_20260311/5_CosmDiff_Integrating_Multitemporal_Optical-SAR_Data_With_Conditional_Diffusion_Models_for_Optical_Satellite_Time_Series_Reconstruction.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_YixiWei_20260311"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
