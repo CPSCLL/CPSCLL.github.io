@@ -1105,11 +1105,11 @@ async function downloadAllPapers32() {
 
     // 定义所有文件的路径
     const files = [
-        './journal_club_papers/P31_YixiWei_20260311/1_PriSTI_A_Conditional_Diffusion_Framework_for_Spatiotemporal_Imputation.pdf',
-        './journal_club_papers/P31_YixiWei_20260311/2_Conditional_Diffusion_Model_with_Nonlinear_Data_Transformation_for_Time_Series_Forecasting.pdf',
-        './journal_club_papers/P31_YixiWei_20260311/3_Lscd_Lomb-scargle_conditioned_diffusion_for_time_series_imputation.pdf',
-        './journal_club_papers/P31_YixiWei_20260311/4_Conditional_Time_Series_Diffusion_Model_for_High-Speed_Train_Multi-Sensor_Signals_Imputation.pdf',
-        './journal_club_papers/P31_YixiWei_20260311/5_CosmDiff_Integrating_Multitemporal_Optical-SAR_Data_With_Conditional_Diffusion_Models_for_Optical_Satellite_Time_Series_Reconstruction.pdf'
+        './journal_club_papers/P32_CeDuan_20260325/1-FlowTurbo Accelerating Flow-based Image Generation Models via Multi-stage Refinement.pdf',
+        './journal_club_papers/P32_CeDuan_20260325/2-MotionFlow Efficient Motion Generation with Latent Flow Matching.pdf',
+        './journal_club_papers/P32_CeDuan_20260325/3-Efficient Video Prediction via Sparsely Conditioned Flow Matching.pdf',
+        './journal_club_papers/P32_CeDuan_20260325/4-Semantic-Guided Flow Matching for Fast and Accurate Remote Sensing Image Super-Resolution.pdf',
+        './journal_club_papers/P32_CeDuan_20260325/5-Fast and Robust Visuomotor Riemannian Flow Matching Policy.pdf'
         
     ];
 
