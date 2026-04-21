@@ -1132,3 +1132,37 @@ async function downloadAllPapers32() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers33() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_GuoyangBian_20260422"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P33_GuoyangBian_20250422/1_Deep Q-network for real-time disassembly line rebalancing of end-of-life products in dynamic recycling conditions.pdf',
+        './journal_club_papers/P33_GuoyangBian_20250422/2_Dynamic_Balancing_of_U-Shaped_Robotic_Disassembly_Lines_Using_an_Effective_Deep_Reinforcement_Learning_Approach.pdf',
+        './journal_club_papers/P33_GuoyangBian_20250422/3_Reinforcement Learning for Hybrid Disassembly Line Balancing Problems.pdf',
+        './journal_club_papers/P33_GuoyangBian_20250422/4_Multi-objective reinforcement learning for dynamic balancing of two-sided human鈥搑obot collaborative disassembly lines.pdf',
+        './journal_club_papers/P33_GuoyangBian_20250422/5_Dynamic scheduling in flexible and hybrid disassembly systems with.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_GuoyangBian_20260422"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
