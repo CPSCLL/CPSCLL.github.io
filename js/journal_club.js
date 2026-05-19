@@ -1166,3 +1166,71 @@ async function downloadAllPapers33() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers34() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_JiarongDu_20260506"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P34_JiarongDu_20260505/1_Meta-relation-based heterogeneous graph neural network with deep reinforcement learning for flexible job shop scheduling.pdf',
+        './journal_club_papers/P34_JiarongDu_20260505/2_A heterogeneous graph attention-enhanced deep reinforcement learning framework for flexible job shop scheduling problem with variable sublots.pdf',
+        './journal_club_papers/P34_JiarongDu_20260505/3_Hybrid artificial bee colony algorithm with Q-learning for distributed heterogeneous flexible job shop scheduling problem considering machine preventive maintenance.pdf',
+        './journal_club_papers/P34_JiarongDu_20260505/4_Distributed_Flexible_Job_Shop_Scheduling_With_Heterogeneous_Transportation_Resources_Constraints_via_Deep_Reinforcement_Learning_and_Graph_Neural_Network.pdf',
+        './journal_club_papers/P34_JiarongDu_20260505/5_A_Spatiotemporal_Graph_Neural_Network_Based_Deep_Reinforcement_Learning_Method_for_Online_Distributed_Job-Shop_Scheduling_Problem.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_JiarongDu_20260506"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
+
+async function downloadAllPapers33() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_JunnanHe_20260520"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P35_JunnanHe_20260520/A health indicator enabling both first predicting time detection and remaining useful life prediction Application to rotating machinery.pdf',
+        './journal_club_papers/P35_JunnanHe_20260520/MCA-DTCN A novel dual-task temporal convolutional network with multi-channel attention for first prediction time detection and remaining useful life prediction.pdf',
+        './journal_club_papers/P35_JunnanHe_20260520/Multi-scale time series analysis using TT-ConvLSTM technique for bearing remaining useful life prediction.pdf',
+        './journal_club_papers/P35_JunnanHe_20260520/Rolling bearing degradation stage division and RUL prediction based on recursive exponential slow feature analysis and Bi-LSTM model.pdf',
+        './journal_club_papers/P35_JunnanHe_20260520/TFG-Mamba Temporal-frequency domain fusion via gating Mamba for computationally efficient bearing RUL prediction.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_JunnanHe_20260520"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
