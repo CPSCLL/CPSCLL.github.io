@@ -1201,7 +1201,7 @@ async function downloadAllPapers34() {
     }
 }
 
-async function downloadAllPapers33() {
+async function downloadAllPapers35() {
     const zip = new JSZip();
     const folder = zip.folder("Papers_JunnanHe_20260520"); // 创建一个文件夹来存储所有论文
 
