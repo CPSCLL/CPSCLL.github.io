@@ -1234,3 +1234,37 @@ async function downloadAllPapers35() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers36() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_MohanNiu_20260603"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P36_MohanNiu_20260603/1_Robust_Reward-Free_ActorCritic_for_Cooperative_Multiagent_Reinforcement_Learning.pdf',
+        './journal_club_papers/P36_MohanNiu_20260603/2_A_Local_Information_Aggregation-Based_Multiagent_Reinforcement_Learning_for_Robot_Swarm_Dynamic_Task_Allocation.pdf',
+        './journal_club_papers/P36_MohanNiu_20260603/3_Effective_Multi-Agent_Deep_Reinforcement_Learning_Control_With_Relative_Entropy_Regularization.pdf',
+        './journal_club_papers/P36_MohanNiu_20260603/4_Attention_With_System_Entropy_for_Optimizing_Credit_Assignment_in_Cooperative_Multi-Agent_Reinforcement_Learning.pdf',
+        './journal_club_papers/P36_MohanNiu_20260603/5_Toward_Fault_Tolerance_in_Multi-Agent_Reinforcement_Learning.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_MohanNiu_20260603"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
