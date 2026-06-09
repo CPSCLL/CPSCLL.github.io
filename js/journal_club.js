@@ -1269,3 +1269,37 @@ async function downloadAllPapers36() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers37() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_JinghaoLiu_20260610"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P37_JinghaoLiu_20260610/1. Spectral methods crucial for machine learning, natural for quantum computers.pdf',
+        './journal_club_papers/P37_JinghaoLiu_20260610/2. A_CDGFN-Based_Quantum_Multisource_Information_Fusion_With_Its_Application_in_Time_Series_Classification.pdf',
+        './journal_club_papers/P37_JinghaoLiu_20260610/3. Time series quantum classifiers with amplitude embedding.pdf',
+        './journal_club_papers/P37_JinghaoLiu_20260610/4. Quantum-enhanced dual-layer  graph attention network for time series forecasting.pdf',
+        './journal_club_papers/P37_JinghaoLiu_20260610/5. PQ-Net Periodic Quantum Networks for Multivariate Time Series Forecasting.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_JinghaoLiu_20260610"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
