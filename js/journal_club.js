@@ -1337,3 +1337,37 @@ async function downloadAllPapers38() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers40() {
+    const zip = new JSZip();
+    const folder = zip.folder("Papers_QingheDong_20260715"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P40_QingheDong_20260715/1.Deep Q-network for real-time disassembly line rebalancing of end-of-life products in dynamic recycling conditions.pdf',
+        './journal_club_papers/P40_QingheDong_20260715/2.Human-robot collaborative disassembly task planning for retired power battery based on Stackelberg game and multi-agent deep reinforcement learning.pdf',
+        './journal_club_papers/P40_QingheDong_20260715/3.Improved_SAC_Algorithm_for_Solving_the_Interactive_Hybrid_Disassembly_Line_Balancing_Problem_Considering_Multiskilled_Workers.pdf',
+        './journal_club_papers/P40_QingheDong_20260715/4.Reinforcement learning for disassembly sequence planning optimization.pdf',
+        './journal_club_papers/P40_QingheDong_20260715/5.Reinforcement Learning for Disassembly Task Control.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_QingheDong_20260715"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
