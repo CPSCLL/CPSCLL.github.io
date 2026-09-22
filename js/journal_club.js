@@ -1378,10 +1378,10 @@ async function downloadAllPapers42() {
 
     // 定义所有文件的路径
     const files = [
-        './journal_club_papers/P42_JunnanHe_20260922/A Two-Level Multisensor Fusion Network With Incremental Learning for Insulation Defect Diagnosis in Gas-Insulated Switchgear(1)',
-        './journal_club_papers/P42_JunnanHe_20260922/A Unified Representation and Fusion Framework of Multi-Source Heterogeneous Data for Fault Diagnosis in Industrial Processes(1)',
-        './journal_club_papers/P42_JunnanHe_20260922/MGTN-DSI A Multi-Sensor Graph Transfer Network Considering Dual Structural Information for Fault Diagnosis under Varying Working Conditions(1)',
-        './journal_club_papers/P42_JunnanHe_20260922/SEA_Multi-Graph-Based_Higher-Order_Sensor_Alignment_for_Multivariate_Time-Series_Unsupervised_Domain_Adaptation(1)',
+        './journal_club_papers/P42_JunnanHe_20260922/A Two-Level Multisensor Fusion Network With Incremental Learning for Insulation Defect Diagnosis in Gas-Insulated Switchgear(1).pdf',
+        './journal_club_papers/P42_JunnanHe_20260922/A Unified Representation and Fusion Framework of Multi-Source Heterogeneous Data for Fault Diagnosis in Industrial Processes(1).pdf',
+        './journal_club_papers/P42_JunnanHe_20260922/MGTN-DSI A Multi-Sensor Graph Transfer Network Considering Dual Structural Information for Fault Diagnosis under Varying Working Conditions(1).pdf',
+        './journal_club_papers/P42_JunnanHe_20260922/SEA_Multi-Graph-Based_Higher-Order_Sensor_Alignment_for_Multivariate_Time-Series_Unsupervised_Domain_Adaptation(1).pdf',
         './journal_club_papers/P42_JunnanHe_20260922/journal_club_JunnanHe-0921-V1(1).pptx'
         
     ];
