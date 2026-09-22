@@ -1371,3 +1371,37 @@ async function downloadAllPapers40() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers42() {
+    const zip = new JSZip();
+    const folder = zip.folder("P42_JunnanHe_20260922"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P42_JunnanHe_20260922/A Two-Level Multisensor Fusion Network With Incremental Learning for Insulation Defect Diagnosis in Gas-Insulated Switchgear(1)',
+        './journal_club_papers/P42_JunnanHe_20260922/A Unified Representation and Fusion Framework of Multi-Source Heterogeneous Data for Fault Diagnosis in Industrial Processes(1)',
+        './journal_club_papers/P42_JunnanHe_20260922/MGTN-DSI A Multi-Sensor Graph Transfer Network Considering Dual Structural Information for Fault Diagnosis under Varying Working Conditions(1)',
+        './journal_club_papers/P42_JunnanHe_20260922/SEA_Multi-Graph-Based_Higher-Order_Sensor_Alignment_for_Multivariate_Time-Series_Unsupervised_Domain_Adaptation(1)',
+        './journal_club_papers/P42_JunnanHe_20260922/journal_club_JunnanHe-0921-V1(1).pptx'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_JunnanHe_20260922"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
