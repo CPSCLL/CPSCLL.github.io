@@ -1405,3 +1405,37 @@ async function downloadAllPapers42() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+
+async function downloadAllPapers43() {
+    const zip = new JSZip();
+    const folder = zip.folder("P43_JinghaoLiu_20261006"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P43_JinghaoLiu_20261006/1.Learning_to_Learn_Variational_Quantum_Algorithm.pdf',
+        './journal_club_papers/P43_JinghaoLiu_20261006/2. PQ-Net Periodic Quantum Networks for Multivariate Time Series Forecasting.pdf',
+        './journal_club_papers/P43_JinghaoLiu_20261006/3. Quantum-enhanced dual-layer  graph attention network for time series forecasting.pdf',
+        './journal_club_papers/P43_JinghaoLiu_20261006/4.Towards provably efficient quantum algorithms for large-scale machine-learning models.pdf',
+        './journal_club_papers/P43_JinghaoLiu_20261006/5.Generalization in quantum machine learning from few training data.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_JinghaoLiu_20261006"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
