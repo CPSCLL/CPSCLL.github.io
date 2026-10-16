@@ -37,7 +37,9 @@ function login() {
         'bgy': 'bjut666',
         'wyx': 'bjut666',
         'dc': 'bjut666',
-        'zh': 'bjut666'
+        'zh': 'bjut666',
+        'zkb': 'bjut666',
+        'lrz': 'bjut666'
         // 添加更多用户
     };
 
