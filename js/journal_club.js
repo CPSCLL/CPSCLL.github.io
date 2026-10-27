@@ -1475,3 +1475,36 @@ async function downloadAllPapers43() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+async function downloadAllPapers43() {
+    const zip = new JSZip();
+    const folder = zip.folder("P44_JiaRongDu_20261027"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P44_JiaRongDu_20261027/1_EFJSP-IBDR Energy-efficient flexible job shop scheduling under incentive-based demand response via graph reinforcement learning with dual attention mechanism.pdf',
+        './journal_club_papers/P44_JiaRongDu_20261027/2_Large language model driven adaptive deep reinforcement learning with dynamic definition refinement for flexible job shop scheduling problem (2).pdf',
+        './journal_club_papers/P44_JiaRongDu_20261027/3_LLM-Assisted_Automatic_Memetic_Algorithm_for_Lot-Streaming_Hybrid_Job_Shop_Scheduling_With_Variable_Sublots.pdf',
+        './journal_club_papers/P44_JiaRongDu_20261027/4_MASC Large language model-based multi-agent scheduling chain for flexible job shop scheduling problem.pdf'
+        
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_JiaRongDu_20261027"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
