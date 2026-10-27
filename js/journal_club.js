@@ -1475,7 +1475,7 @@ async function downloadAllPapers43() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
-async function downloadAllPapers43() {
+async function downloadAllPapers44() {
     const zip = new JSZip();
     const folder = zip.folder("P44_JiaRongDu_20261027"); // 创建一个文件夹来存储所有论文
 
