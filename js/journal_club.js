@@ -1508,3 +1508,36 @@ async function downloadAllPapers44() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+async function downloadAllPapers45() {
+    const zip = new JSZip();
+    const folder = zip.folder("P45_ZhichengChen_20261103"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P45_ZhichengChen_20261103/A Federated Large Language Model for Long-Term Time Series Forecasting.pdf',
+        './journal_club_papers/P45_ZhichengChen_20261103/FedMKT Federated Mutual Knowledge Transfer for Large and Small Language Models.pdf',
+        './journal_club_papers/P45_ZhichengChen_20261103/FedPFT Federated Proxy Fine-Tuning of Foundation Models.pdf',
+        './journal_club_papers/P45_ZhichengChen_20261103/FedPromo_Federated_Lightweight_Proxy_Models_at_the_Edge_for_Fine-Grained_Image_Classification_With_Foundation_Models.pdf',
+        './journal_club_papers/P45_ZhichengChen_20261103/FedProxy Federated Fine-Tuning of LLMs via Proxy SLMs and Heterogeneity-Aware Fusion(1).pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_ZhichengChen_20261103"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
