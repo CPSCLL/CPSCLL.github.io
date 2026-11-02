@@ -56,6 +56,20 @@
                     <img src="./images/new25_2.jpg" alt="" style="margin: 0 auto;"/>
                     <img src="./images/new25_3.jpg" alt="" style="margin: 0 auto;"/>
                 </div>   
+                <style>
+.img-row {
+  font-size: 0;        /* 消除 inline-block 之间的空白间隙 */
+  text-align: center;
+}
+.img-row img {
+  display: inline-block;
+  width: calc((100% - 20px) / 3); /* 减去两个 gap */
+  margin: 0 5px;
+  vertical-align: top;
+  height: 200px;
+  object-fit: cover;
+}
+</style>
             </div>
             <!--2026.7 刘憬昊参加中国控制会议-->
             <div class="lognet">
