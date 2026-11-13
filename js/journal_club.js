@@ -1541,3 +1541,35 @@ async function downloadAllPapers45() {
         alert('Failed to download files. Please check the file paths or try again later.');
     }
 }
+async function downloadAllPapers46() {
+    const zip = new JSZip();
+    const folder = zip.folder("P46_ManLi_20261114"); // 创建一个文件夹来存储所有论文
+
+    // 定义所有文件的路径
+    const files = [
+        './journal_club_papers/P46_ManLi_20261114/1-Modeling_and_Compensation_of_Backlash-Induced_Dynamics_Error_in_Industrial_Robots_With_a_PINN-Based_Approach.pdf',
+        './journal_club_papers/P46_ManLi_20261114/2_Improved deep Lagragian network-enabled momentum observer for collision detection during human-robot collaboration.pdf',
+        './journal_club_papers/P46_ManLi_20261114/3-Adaptive Physics-informed Transformer with Gaussian process residual compensation for inverse dynamics modeling in Human–Robot Collaboration.pdf',
+        './journal_club_papers/P46_ManLi_20261114/5_Learning_Accurate_Robot_Dynamics_From_Position-Only_Data_With_Discrete_Lagrangian_Neural_Networks.pdf'
+        
+    ];
+
+    try {
+        // 下载每个文件并将其添加到zip文件中
+        for (const file of files) {
+            const response = await fetch(file);
+            if (!response.ok) throw new Error(`Failed to fetch ${file}`);
+            const blob = await response.blob();
+            const fileName = file.split('/').pop(); // 从路径中提取文件名
+            folder.file(fileName, blob); // 将每个文件添加到zip文件夹中
+        }
+
+        // 生成ZIP文件并触发下载
+        zip.generateAsync({ type: 'blob' }).then(function(content) {
+            saveAs(content, "Papers_ManLi_20261114"); // 使用FileSaver.js保存文件
+        });
+    } catch (error) {
+        console.error('Error downloading files:', error);
+        alert('Failed to download files. Please check the file paths or try again later.');
+    }
+}
